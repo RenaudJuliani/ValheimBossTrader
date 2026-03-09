@@ -154,4 +154,4 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 ## Source Code
 
-[github.com/juliani/ValheimBossTrader](https://github.com/juliani/ValheimBossTrader)
+[github.com/RenaudJuliani/ValheimBossTrader](https://github.com/RenaudJuliani/ValheimBossTrader)
