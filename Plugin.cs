@@ -4,6 +4,7 @@ using HarmonyLib;
 
 namespace ValheimBossTrader
 {
+    [BepInDependency("ValheimLegends", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
     {
