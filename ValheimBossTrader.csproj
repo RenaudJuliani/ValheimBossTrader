@@ -19,8 +19,8 @@
     <!-- Valheim game assemblies via NuGet -->
     <PackageReference Include="Valheim.GameLibs" Version="*-*" />
 
-    <!-- Harmony (inclus dans BepInEx mais on le référence explicitement) -->
-    <PackageReference Include="HarmonyX" Version="2.*" />
+    <!-- HarmonyX épinglé à 2.10.x : dernière version sans MonoMod.Backports (2.11.0+ l'a introduit) -->
+    <PackageReference Include="HarmonyX" Version="2.10.1" />
   </ItemGroup>
 
 </Project>

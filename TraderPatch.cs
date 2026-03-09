@@ -96,6 +96,14 @@ namespace ValheimBossTrader
                 if (itemDrop == null)
                     continue;
 
+                // Compatibilité EpicLoot : ignorer les items sans type valide
+                // (ItemType.None provoque une KeyNotFoundException dans GatedItemTypeHelper)
+                if (itemDrop.m_itemData?.m_shared?.m_itemType == ItemDrop.ItemData.ItemType.None)
+                {
+                    Plugin.Log.LogWarning($"[BossTrader] Ignoré (ItemType.None, incompatible EpicLoot) : {def.PrefabName}");
+                    continue;
+                }
+
                 trader.m_items.Add(new Trader.TradeItem
                 {
                     m_prefab = itemDrop,

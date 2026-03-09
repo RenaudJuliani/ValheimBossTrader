@@ -31,13 +31,23 @@ namespace ValheimBossTrader
     /// </summary>
     public static class TraderItems
     {
-        public record TradeItemDef(
-            string   PrefabName,
-            int      Stack,
-            int      Price,
-            string?  RequiredKey = null,
-            Category Cat         = Category.Misc
-        );
+        public class TradeItemDef
+        {
+            public string   PrefabName  { get; }
+            public int      Stack       { get; }
+            public int      Price       { get; }
+            public string   RequiredKey { get; }
+            public Category Cat         { get; }
+
+            public TradeItemDef(string prefabName, int stack, int price, string requiredKey = null, Category cat = Category.Misc)
+            {
+                PrefabName  = prefabName;
+                Stack       = stack;
+                Price       = price;
+                RequiredKey = requiredKey;
+                Cat         = cat;
+            }
+        }
 
         /// <summary>
         /// Retourne uniquement les items dont la catégorie est activée dans la config.
