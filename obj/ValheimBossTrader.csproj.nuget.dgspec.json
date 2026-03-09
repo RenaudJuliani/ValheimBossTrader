@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/ValheimBossTrader.csproj": {}
+  },
+  "projects": {
+    "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/ValheimBossTrader.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/ValheimBossTrader.csproj",
+        "projectName": "ValheimBossTrader",
+        "projectPath": "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/ValheimBossTrader.csproj",
+        "packagesPath": "/Users/juliani/.nuget/packages/",
+        "outputPath": "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/juliani/Desktop/Dev/mods/valheim/ValheimBossTrader/NuGet.Config",
+          "/Users/juliani/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net481"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "net481": {
+            "targetAlias": "net481",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net481": {
+          "targetAlias": "net481",
+          "dependencies": {
+            "BepInEx.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.*, )"
+            },
+            "BepInEx.Core": {
+              "target": "Package",
+              "version": "[5.*, )"
+            },
+            "BepInEx.PluginInfoProps": {
+              "target": "Package",
+              "version": "[1.*, )"
+            },
+            "HarmonyX": {
+              "target": "Package",
+              "version": "[2.*, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            },
+            "UnityEngine.Modules": {
+              "target": "Package",
+              "version": "[2022.3.*, )"
+            },
+            "Valheim.GameLibs": {
+              "target": "Package",
+              "version": "[*-*, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

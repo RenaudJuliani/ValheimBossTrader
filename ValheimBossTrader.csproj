@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net481</TargetFramework>
+    <AssemblyName>ValheimBossTrader</AssemblyName>
+    <RootNamespace>ValheimBossTrader</RootNamespace>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- BepInEx -->
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.*" />
+
+    <!-- Valheim game assemblies via NuGet -->
+    <PackageReference Include="Valheim.GameLibs" Version="*-*" />
+
+    <!-- Harmony (inclus dans BepInEx mais on le référence explicitement) -->
+    <PackageReference Include="HarmonyX" Version="2.*" />
+  </ItemGroup>
+
+</Project>
