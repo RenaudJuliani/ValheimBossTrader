@@ -155,3 +155,7 @@ See [CHANGELOG.md](CHANGELOG.md)
 ## Source Code
 
 [github.com/RenaudJuliani/ValheimBossTrader](https://github.com/RenaudJuliani/ValheimBossTrader)
+
+## Thunderstore
+
+[thunderstore.io/c/valheim/p/Sto_dev/ValheimBossTrader](https://thunderstore.io/c/valheim/p/Sto_dev/ValheimBossTrader/)
