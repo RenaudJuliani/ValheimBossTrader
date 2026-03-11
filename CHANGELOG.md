@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+- New: **Bank system** — deposit and withdraw coins at Haldor. Balance saved per character in `BepInEx/config/BossTrader_Bank/`. Bank funds are automatically used when buying items (inventory is topped up transparently before each purchase).
+- New: **Category filter panel** — IMGUI panel displayed next to the merchant, with buttons for each category (Matériaux, Nourriture, Armes, Armures, Munitions, Consommables, Divers). Clicking a category filters the item list instantly; clicking again returns to "Tout".
+- New: **Haldor dark-wood UI theme** — Bank and category filter panels use a custom dark wood / amber palette matching Haldor's Black Forest aesthetic.
+- Fix: Capes (`CapeDeerHide`, `CapeTrollHide`, `CapeWolf`, `CapeFeather`, `CapeLinen`, `CapeLox`, `CapeAsh`, `CapeAsksvin`) were incorrectly categorized as Food; corrected to Armor.
+
 ## 1.0.2
 - Fix: load after ValheimLegends to prevent Warp spell conflict (SoftDependency)
 

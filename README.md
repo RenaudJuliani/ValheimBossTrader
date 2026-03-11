@@ -11,6 +11,8 @@ Every item sold by the trader is gated behind the boss of its corresponding biom
 - **Boss-gated progression** — Items unlock as you defeat bosses, following Valheim's natural biome progression
 - **964 items** across all biomes, organized into 7 categories
 - **Real-time unlock** — Kill a boss mid-session and items appear immediately, no reload needed
+- **Bank system** — Deposit and withdraw coins at Haldor. Balance is saved per character and automatically used when buying items
+- **Category filter** — A panel next to the merchant lets you filter items by category (Materials, Food, Weapons, Armor, Ammo, Consumables, Misc)
 - **Choose your traders** — Configure which merchants sell items (Haldor, Hildir, Bog Witch)
 - **Fully configurable** — Adjust prices, stack sizes, toggle categories and merchants via the `.cfg` file
 - **Compatible with r2modman and DatHost** — Config is a standard BepInEx `.cfg` file
@@ -128,6 +130,28 @@ EnableMisc        = false
 ## Server-side Usage
 
 This mod **must be installed on the server** for boss-gating to work correctly in multiplayer, since global keys are stored server-side. Clients do not need to install it (the items will appear for all players when they open the shop).
+
+---
+
+## Bank System
+
+When you open Haldor's shop, a **COFFRE D'HALDOR** panel appears on the right side of the screen.
+
+- **Deposit** — Transfer coins from your inventory to the bank
+- **Withdraw** — Transfer coins from the bank to your inventory
+- **Withdraw All** — Empty the bank in one click
+- Bank balance is **saved per character** in `BepInEx/config/BossTrader_Bank/<CharacterName>.dat`
+- When buying from Haldor, if your inventory lacks funds, the **bank is tapped automatically** to cover the difference
+
+---
+
+## Category Filter
+
+A **CATÉGORIES** panel appears to the right of the merchant list.
+
+- Click a category to show only matching items
+- Click the active category again (or **Tout**) to clear the filter
+- The filter resets when you close the shop
 
 ---
 

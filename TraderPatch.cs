@@ -111,6 +111,7 @@ namespace ValheimBossTrader
                     m_price  = ModConfig.ApplyPrice(def.Price),
                 });
 
+                CategoryFilter.Register(def.PrefabName, def.Cat);
                 existing.Add(def.PrefabName);
                 added++;
             }
