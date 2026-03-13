@@ -10,7 +10,7 @@ namespace ValheimBossTrader
     {
         public const string PluginGuid    = "juliani.mods.valheim.bosstrader";
         public const string PluginName    = "ValheimBossTrader";
-        public const string PluginVersion = "1.0.3";
+        public const string PluginVersion = "1.0.4";
 
         internal static ManualLogSource Log = null!;
 

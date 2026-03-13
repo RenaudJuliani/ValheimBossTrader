@@ -33,6 +33,17 @@ namespace ValheimBossTrader
         private static readonly Color cCream     = new Color(0.84f, 0.755f, 0.560f, 1.00f);
         private static readonly Color cActiveText = new Color(0.10f, 0.06f, 0.02f, 1.00f);
 
+        // Textures (références fortes pour éviter le garbage collector)
+        private Texture2D _texDarkWood;
+        private Texture2D _texMedWood;
+        private Texture2D _texAmber;
+        private Texture2D _texAmberDim;
+        private Texture2D _texBtnNormal;
+        private Texture2D _texBtnHover;
+        private Texture2D _texBtnActive;
+        private Texture2D _texBtnActiveHover;
+        private Texture2D _texSeparator;
+
         // ── Cycle de vie ──────────────────────────────────────────────────────
 
         private void Awake()
@@ -90,9 +101,9 @@ namespace ValheimBossTrader
         private void DrawWindow(int id)
         {
             // ── Header ─────────────────────────────────────────────────────
-            GUI.DrawTexture(new Rect(0, 0, _windowRect.width, 32), MakeTex(1, 1, cMedWood));
+            GUI.DrawTexture(new Rect(0, 0, _windowRect.width, 32), _texMedWood);
             GUI.Label(new Rect(0, 5, _windowRect.width, 22), "CATÉGORIES", _titleStyle);
-            GUI.DrawTexture(new Rect(6, 32, _windowRect.width - 12, 2), MakeTex(1, 1, cAmber));
+            GUI.DrawTexture(new Rect(6, 32, _windowRect.width - 12, 2), _texAmber);
 
             GUILayout.Space(40);
 
@@ -164,8 +175,19 @@ namespace ValheimBossTrader
             {
                 padding = new RectOffset(0, 0, 0, 4)
             };
-            _windowStyle.normal.background   = MakeTex(1, 1, cDarkWood);
-            _windowStyle.onNormal.background = MakeTex(1, 1, cDarkWood);
+            // ── Textures (stockées en champs pour éviter le GC) ───────────
+            _texDarkWood      = MakeTex(1, 1, cDarkWood);
+            _texMedWood       = MakeTex(1, 1, cMedWood);
+            _texAmber         = MakeTex(1, 1, cAmber);
+            _texAmberDim      = MakeTex(1, 1, new Color(0.35f, 0.22f, 0.06f, 1f));
+            _texBtnNormal     = MakeTex(1, 1, cBtnNormal);
+            _texBtnHover      = MakeTex(1, 1, cBtnHover);
+            _texBtnActive     = MakeTex(1, 1, cAmber);
+            _texBtnActiveHover = MakeTex(1, 1, new Color(0.60f, 0.38f, 0.10f, 1f));
+            _texSeparator     = MakeTex(1, 1, new Color(0.35f, 0.22f, 0.06f, 1f));
+
+            _windowStyle.normal.background   = _texDarkWood;
+            _windowStyle.onNormal.background = _texDarkWood;
 
             _titleStyle = new GUIStyle(GUI.skin.label)
             {
@@ -181,9 +203,9 @@ namespace ValheimBossTrader
                 fontStyle = FontStyle.Normal,
                 alignment = TextAnchor.MiddleCenter
             };
-            _btnStyle.normal.background = MakeTex(1, 1, cBtnNormal);
-            _btnStyle.hover.background  = MakeTex(1, 1, cBtnHover);
-            _btnStyle.active.background = MakeTex(1, 1, cAmber);
+            _btnStyle.normal.background = _texBtnNormal;
+            _btnStyle.hover.background  = _texBtnHover;
+            _btnStyle.active.background = _texBtnActive;
             _btnStyle.normal.textColor  = cCream;
             _btnStyle.hover.textColor   = Color.white;
             _btnStyle.active.textColor  = cGold;
@@ -193,8 +215,8 @@ namespace ValheimBossTrader
             {
                 fontStyle = FontStyle.Bold
             };
-            _btnActiveStyle.normal.background = MakeTex(1, 1, cAmber);
-            _btnActiveStyle.hover.background  = MakeTex(1, 1, new Color(0.60f, 0.38f, 0.10f, 1f));
+            _btnActiveStyle.normal.background = _texBtnActive;
+            _btnActiveStyle.hover.background  = _texBtnActiveHover;
             _btnActiveStyle.normal.textColor  = cActiveText;
             _btnActiveStyle.hover.textColor   = cActiveText;
 
@@ -204,7 +226,7 @@ namespace ValheimBossTrader
                 margin  = new RectOffset(6, 6, 0, 0),
                 border  = new RectOffset(0, 0, 0, 0)
             };
-            _separatorStyle.normal.background = MakeTex(1, 1, new Color(0.35f, 0.22f, 0.06f, 1f));
+            _separatorStyle.normal.background = _texSeparator;
         }
 
         private static Texture2D MakeTex(int w, int h, Color col)

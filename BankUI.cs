@@ -29,6 +29,18 @@ namespace ValheimBossTrader
         private GUIStyle _separatorStyle;
         private GUIStyle _feedbackStyle;
 
+        // Textures (références fortes pour éviter le garbage collector)
+        private Texture2D _texDarkWood;
+        private Texture2D _texMedWood;
+        private Texture2D _texAmber;
+        private Texture2D _texBtnNormal;
+        private Texture2D _texBtnHover;
+        private Texture2D _texBtnActive;
+        private Texture2D _texInputBg;
+        private Texture2D _texInputFocus;
+        private Texture2D _texInputHover;
+        private Texture2D _texSeparator;
+
         // Palettee Haldor / Forêt Noire
         private static readonly Color cDarkWood   = new Color(0.07f, 0.042f, 0.015f, 0.97f);
         private static readonly Color cMedWood    = new Color(0.16f, 0.100f, 0.038f, 1.00f);
@@ -72,11 +84,11 @@ namespace ValheimBossTrader
         private void DrawWindow(int id)
         {
             // ── Barre de titre ─────────────────────────────────────────────
-            GUI.DrawTexture(new Rect(0, 0, _windowRect.width, 38), MakeTex(1, 1, cMedWood));
+            GUI.DrawTexture(new Rect(0, 0, _windowRect.width, 38), _texMedWood);
             GUI.Label(new Rect(0, 5, _windowRect.width, 28), "⚜  COFFRE D'HALDOR  ⚜", _titleStyle);
 
             // ── Séparateur doré ────────────────────────────────────────────
-            GUI.DrawTexture(new Rect(8, 38, _windowRect.width - 16, 2), MakeTex(1, 1, cAmber));
+            GUI.DrawTexture(new Rect(8, 38, _windowRect.width - 16, 2), _texAmber);
 
             // Espace sous le header
             GUILayout.Space(52);
@@ -196,14 +208,26 @@ namespace ValheimBossTrader
             if (_stylesReady) return;
             _stylesReady = true;
 
+            // ── Textures (stockées en champs pour éviter le GC) ───────────
+            _texDarkWood   = MakeTex(1, 1, cDarkWood);
+            _texMedWood    = MakeTex(1, 1, cMedWood);
+            _texAmber      = MakeTex(1, 1, cAmber);
+            _texBtnNormal  = MakeTex(1, 1, cBtnNormal);
+            _texBtnHover   = MakeTex(1, 1, cBtnHover);
+            _texBtnActive  = MakeTex(1, 1, cBtnActive);
+            _texInputBg    = MakeTex(1, 1, cInputBg);
+            _texInputFocus = MakeTex(1, 1, new Color(0.06f, 0.038f, 0.014f, 1f));
+            _texInputHover = MakeTex(1, 1, new Color(0.05f, 0.030f, 0.012f, 1f));
+            _texSeparator  = MakeTex(1, 1, cAmber);
+
             // Fenêtre principale
             _windowStyle = new GUIStyle(GUI.skin.window)
             {
                 padding = new RectOffset(0, 0, 0, 6),
                 border  = new RectOffset(4, 4, 4, 4)
             };
-            _windowStyle.normal.background   = MakeTex(1, 1, cDarkWood);
-            _windowStyle.onNormal.background = MakeTex(1, 1, cDarkWood);
+            _windowStyle.normal.background   = _texDarkWood;
+            _windowStyle.onNormal.background = _texDarkWood;
 
             // Titre centré doré
             _titleStyle = new GUIStyle(GUI.skin.label)
@@ -237,9 +261,9 @@ namespace ValheimBossTrader
                 fontSize  = 14,
                 alignment = TextAnchor.MiddleCenter
             };
-            _fieldStyle.normal.background  = MakeTex(1, 1, cInputBg);
-            _fieldStyle.focused.background = MakeTex(1, 1, new Color(0.06f, 0.038f, 0.014f, 1f));
-            _fieldStyle.hover.background   = MakeTex(1, 1, new Color(0.05f, 0.030f, 0.012f, 1f));
+            _fieldStyle.normal.background  = _texInputBg;
+            _fieldStyle.focused.background = _texInputFocus;
+            _fieldStyle.hover.background   = _texInputHover;
             _fieldStyle.normal.textColor   = cCream;
             _fieldStyle.focused.textColor  = Color.white;
 
@@ -250,9 +274,9 @@ namespace ValheimBossTrader
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleCenter
             };
-            _btnStyle.normal.background  = MakeTex(1, 1, cBtnNormal);
-            _btnStyle.hover.background   = MakeTex(1, 1, cBtnHover);
-            _btnStyle.active.background  = MakeTex(1, 1, cBtnActive);
+            _btnStyle.normal.background  = _texBtnNormal;
+            _btnStyle.hover.background   = _texBtnHover;
+            _btnStyle.active.background  = _texBtnActive;
             _btnStyle.normal.textColor   = cCream;
             _btnStyle.hover.textColor    = Color.white;
             _btnStyle.active.textColor   = cGold;
@@ -272,7 +296,7 @@ namespace ValheimBossTrader
                 margin  = new RectOffset(12, 12, 0, 0),
                 border  = RectOffset(0)
             };
-            _separatorStyle.normal.background = MakeTex(1, 1, cAmber);
+            _separatorStyle.normal.background = _texSeparator;
 
             // Feedback
             _feedbackStyle = new GUIStyle(GUI.skin.label)

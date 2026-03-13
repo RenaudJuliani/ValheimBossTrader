@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4
+- Fix: Bank and category filter UI backgrounds disappearing after a few seconds — textures were being garbage collected by Unity. All textures are now stored as MonoBehaviour fields to prevent collection.
+
 ## 1.0.3
 - New: **Bank system** — deposit and withdraw coins at Haldor. Balance saved per character in `BepInEx/config/BossTrader_Bank/`. Bank funds are automatically used when buying items (inventory is topped up transparently before each purchase).
 - New: **Category filter panel** — IMGUI panel displayed next to the merchant, with buttons for each category (Matériaux, Nourriture, Armes, Armures, Munitions, Consommables, Divers). Clicking a category filters the item list instantly; clicking again returns to "Tout".
