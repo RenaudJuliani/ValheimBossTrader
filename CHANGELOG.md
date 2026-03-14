@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.5
+- New: Console command `bankset <montant>` — sets the bank balance directly (requires `devcommands`). Useful for testing.
+
 ## 1.0.4
 - Fix: Bank and category filter UI backgrounds disappearing after a few seconds — textures were being garbage collected by Unity. All textures are now stored as MonoBehaviour fields to prevent collection.
 

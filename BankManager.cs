@@ -37,6 +37,13 @@ namespace ValheimBossTrader
             File.WriteAllText(FilePath(GetPlayerName()), amount.ToString());
         }
 
+        /// <summary>Utilisé par la commande console de debug.</summary>
+        public static void SetBalanceDebug(long amount)
+        {
+            SetBalance(amount);
+            Plugin.Log.LogInfo($"[Bank] Solde forcé à {amount} (debug).");
+        }
+
         public static string GetCoinSharedName()
         {
             if (StoreGui.instance?.m_coinPrefab != null)

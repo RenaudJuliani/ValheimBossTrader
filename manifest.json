@@ -1,7 +1,7 @@
 {
   "name": "ValheimBossTrader",
   "description": "Unlock 964 items at Haldor based on boss progression. Kill a boss, unlock the next biome's resources. Prices from TraderOverhaul. Fully configurable.",
-  "version_number": "1.0.4",
+  "version_number": "1.0.5",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.2202"
   ],

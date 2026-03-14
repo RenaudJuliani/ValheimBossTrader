@@ -75,4 +75,37 @@ namespace ValheimBossTrader
                 BankManager.Withdraw(shortfall, out _);
         }
     }
+
+    /// <summary>
+    /// Commande console de debug : bankset [montant]
+    /// Nécessite devcommands activé en jeu.
+    /// Usage : bankset 9999
+    /// </summary>
+    [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]
+    public static class Terminal_InitTerminal_BankPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix()
+        {
+            new Terminal.ConsoleCommand(
+                "bankset",
+                "[montant] — Définit le solde de la banque (debug BossTrader)",
+                args =>
+                {
+                    if (args.Args.Length < 2)
+                    {
+                        args.Context.AddString("Usage : bankset <montant>");
+                        return;
+                    }
+                    if (!long.TryParse(args.Args[1], out long amount) || amount < 0)
+                    {
+                        args.Context.AddString("Montant invalide. Exemple : bankset 9999");
+                        return;
+                    }
+                    BankManager.SetBalanceDebug(amount);
+                    args.Context.AddString($"[BossTrader] Solde bancaire → {amount} pièces.");
+                },
+                isCheat: true);
+        }
+    }
 }
