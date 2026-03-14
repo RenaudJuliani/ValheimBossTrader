@@ -80,13 +80,19 @@ namespace ValheimBossTrader
     /// Commande console de debug : bankset [montant]
     /// Nécessite devcommands activé en jeu.
     /// Usage : bankset 9999
+    /// Patch sur Awake (pas InitTerminal) pour éviter l'ouverture automatique de la console au démarrage.
     /// </summary>
-    [HarmonyPatch(typeof(Terminal), nameof(Terminal.InitTerminal))]
-    public static class Terminal_InitTerminal_BankPatch
+    [HarmonyPatch(typeof(Terminal), "Awake")]
+    public static class Terminal_Awake_BankPatch
     {
+        private static bool _registered = false;
+
         [HarmonyPostfix]
         public static void Postfix()
         {
+            if (_registered) return;
+            _registered = true;
+
             new Terminal.ConsoleCommand(
                 "bankset",
                 "[montant] — Définit le solde de la banque (debug BossTrader)",
