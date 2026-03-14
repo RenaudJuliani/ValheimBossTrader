@@ -78,40 +78,30 @@ namespace ValheimBossTrader
 
     /// <summary>
     /// Commande console de debug : bankset [montant]
-    /// Nécessite devcommands activé en jeu.
-    /// Usage : bankset 9999
-    /// Patch sur Awake (pas InitTerminal) pour éviter l'ouverture automatique de la console au démarrage.
+    /// Intercepte TryRunCommand pour éviter tout problème de type de delegate.
+    /// Nécessite devcommands activé en jeu. Usage : bankset 9999
     /// </summary>
-    [HarmonyPatch(typeof(Terminal), "Awake")]
-    public static class Terminal_Awake_BankPatch
+    [HarmonyPatch(typeof(Terminal), "TryRunCommand")]
+    public static class Terminal_TryRunCommand_BankPatch
     {
-        private static bool _registered = false;
-
-        [HarmonyPostfix]
-        public static void Postfix()
+        [HarmonyPrefix]
+        public static bool Prefix(string text)
         {
-            if (_registered) return;
-            _registered = true;
+            if (string.IsNullOrEmpty(text)) return true;
 
-            new Terminal.ConsoleCommand(
-                "bankset",
-                "[montant] — Définit le solde de la banque (debug BossTrader)",
-                args =>
-                {
-                    if (args.Args.Length < 2)
-                    {
-                        args.Context.AddString("Usage : bankset <montant>");
-                        return;
-                    }
-                    if (!long.TryParse(args.Args[1], out long amount) || amount < 0)
-                    {
-                        args.Context.AddString("Montant invalide. Exemple : bankset 9999");
-                        return;
-                    }
-                    BankManager.SetBalanceDebug(amount);
-                    args.Context.AddString($"[BossTrader] Solde bancaire → {amount} pièces.");
-                },
-                isCheat: true);
+            var parts = text.Trim().Split(new char[]{' '}, System.StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length == 0 || parts[0].ToLowerInvariant() != "bankset") return true;
+
+            if (parts.Length < 2 || !long.TryParse(parts[1], out long amount) || amount < 0)
+            {
+                Plugin.Log.LogInfo("[Bank] Usage : bankset <montant>");
+                return false;
+            }
+
+            BankManager.SetBalanceDebug(amount);
+            Plugin.Log.LogInfo($"[Bank] Solde bancaire → {amount} pièces.");
+            return false;
         }
     }
+
 }

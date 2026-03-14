@@ -10,7 +10,7 @@ namespace ValheimBossTrader
     {
         public const string PluginGuid    = "juliani.mods.valheim.bosstrader";
         public const string PluginName    = "ValheimBossTrader";
-        public const string PluginVersion = "1.0.5";
+        public const string PluginVersion = "1.0.6";
 
         internal static ManualLogSource Log = null!;
 
@@ -23,6 +23,7 @@ namespace ValheimBossTrader
             Log.LogInfo($"{PluginName} v{PluginVersion} chargé — {CountItems()} items configurés.");
             _harmony.PatchAll();
         }
+
 
         private void OnDestroy() => _harmony.UnpatchSelf();
 

@@ -88,7 +88,6 @@ namespace ValheimBossTrader
             RemoveCoinsFromInventory(player, amount);
             SetBalance(GetBalance() + amount);
             message = $"Déposé {amount} pièces. Solde : {GetBalance()}";
-            Plugin.Log.LogInfo($"[Bank] Dépôt {amount}. Solde : {GetBalance()}");
             return true;
         }
 
@@ -190,7 +189,6 @@ namespace ValheimBossTrader
             SetBalance(balance - amount);
             AddCoinsToInventory(inv, amount);
             message = $"Retiré {amount} pièces. Solde : {GetBalance()}";
-            Plugin.Log.LogInfo($"[Bank] Retrait {amount}. Solde : {GetBalance()}");
             return true;
         }
 

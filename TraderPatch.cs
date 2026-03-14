@@ -88,7 +88,7 @@ namespace ValheimBossTrader
                 var prefabGo = ObjectDB.instance.GetItemPrefab(def.PrefabName);
                 if (prefabGo == null)
                 {
-                    Plugin.Log.LogWarning($"[BossTrader] Prefab introuvable : {def.PrefabName}");
+                    Plugin.Log.LogDebug($"[BossTrader] Prefab introuvable : {def.PrefabName}");
                     continue;
                 }
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6
+- Fix: `bankset` console command now works correctly (rewritten to intercept `Terminal.TryRunCommand` directly, bypassing NuGet stub/game version incompatibility).
+- Fix: Removed verbose bank logs on each purchase (no more freeze caused by log spam).
+- Fix: Missing prefab warnings downgraded to debug level (no longer visible in default BepInEx log output).
+
 ## 1.0.5
 - New: Console command `bankset <montant>` — sets the bank balance directly (requires `devcommands`). Useful for testing.
 
